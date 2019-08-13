@@ -3,7 +3,7 @@ window.onload = function () {
   //  console.log('sdfs');
 
     if (window.lms.authService.isLogined()) {
-        window.location = 'some.html'
+        window.location = 'HER/index.html';
     }
 };
 

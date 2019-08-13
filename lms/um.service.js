@@ -1,7 +1,7 @@
 class UmService {
 
-    getUserByUsername() {
-        for(let i = 0; i < sessionStorage.length; i++) {
+    getUserByUsername(username) {
+        for(let i = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
             if (key == username){
                 return {username: username, password: password}

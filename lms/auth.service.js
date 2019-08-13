@@ -6,31 +6,29 @@ class AuthService {
     }
 
     login(username, password) {
-        let user = this.umService.getUserByUsername(username);
+        let user = this.umService.getUserByPassword(password);
 
         if(user == null) {
-            throw new Error(`user with ${username} not found`);
+            throw new Error(`incorrect username or password`);
         }
 
-        if(user.password === EncryptionHelper.encrypt(password)) {
+        else{
             let userPermissions = this.permissionService.getPermissions(username);
 
             sessionStorage.setItem(userId, {
                 user: user,
                 permissions: userPermissions
             })
-        } else {
-            throw new Error(`incorrect username or password`);
         }
 
         return user;
     }
 
-    logout(username) {
+    logout(username){
         sessionStorage.removeItem(username);
     }
 
     isLogined(username) {
-        return sessionStorage.getItem(username) != null;
+        return sessionStorage.getItem(username) == true;
     }
 }

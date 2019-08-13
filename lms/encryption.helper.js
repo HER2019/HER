@@ -1,6 +1,6 @@
 class EncryptionHelper {
 
     static encrypt(password) {
-        return  CryptoJS.AES.encrypt(password, "Secret Passphrase");
+        return  CryptoJS.SHA256(password).toString();
     }
 }
