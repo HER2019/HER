@@ -1,11 +1,11 @@
 class User {
   static cnt = 0;
-  constructor(permission, username, email){
+  constructor(books, permission, username, email){
     this.email = email;
     this.permission = permission;
     User.cnt++;
     this.userId = User.cnt;
-    this.books = [];
+    this.books = books;
     this.username = username;
   }
 
@@ -16,7 +16,15 @@ class User {
   viewHistory(){
     return this.books;
   }
-
+  viewBorrowedBooks(){
+    let borrowedBooks=[];
+    for (let i = 0; i < this.books.length; i++) {
+      if (this.books[i].returnDate > new Date()) {
+        borrowedBooks.push(this.books[i]);
+      }
+    }
+    return borrowedBooks;
+  }
   request(num){
     switch(num){
       case 1:{

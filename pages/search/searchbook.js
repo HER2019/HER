@@ -17,14 +17,14 @@ function updateResult(query) {
     for (let i = 0 ; i < names.length; i++) {
         if(names[i].name.toLowerCase().includes(query.toLowerCase()) ||
             names[i].surname.toLowerCase().includes(query.toLowerCase())) {
-            let row = table.insertRow(k);
-            let cell1 = row.insertCell(0);
-            let cell2 = row.insertCell(1);
-            let cell3 = row.insertCell(2);
-            let cell4 = row.insertCell(3);
+            row = table.insertRow(k);
+            cell1 = row.insertCell(0);
+            cell2 = row.insertCell(1);
+            cell3 = row.insertCell(2);
+            cell4 = row.insertCell(3);
             cell1.innerHTML = `${names[i].id}`;
             cell2.innerHTML = `${names[i].name}`;
-            cell3.innerHTML = `${names[i].surname}`;
+            cell3.innerHTML = `${names[i].author}`;
             if (typeof names[i].userId === 'undefined'){
                 cell4.innerHTML = "True";
             }else{
