@@ -25,7 +25,9 @@ class Library {
             }
         }
     }
-    
+    getBooks(){
+        return this.books;
+    }
     registerUser (user){
         this.users.push(user);
     }
