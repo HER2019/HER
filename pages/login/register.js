@@ -25,7 +25,7 @@ function register(){
   user.userId = maxId + 1;
   let jsonUser = {
     email: user.email,
-    username: user.username,
+    username: name,
     permission: 1,
     id: user.userId,
     books: []
@@ -34,7 +34,7 @@ function register(){
   localStorage.setItem(encryptPass, serialObj);
   window.location = 'signin.html';
 }
-function open(){
+function login(){
   let username = document.getElementById("your_name").value;
   let password = document.getElementById("your_pass").value;
   let pass = EncryptionHelper.encrypt(password);
@@ -48,5 +48,6 @@ function open(){
       return;
     }
   }
-  window.location = 'HER/index.html';
+	window.location.href = 'http://localhost:63342/HER/';
+  //window.location = 'HER';
 }
