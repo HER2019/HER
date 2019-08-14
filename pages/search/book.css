@@ -1,0 +1,30 @@
+.btn-group button {
+    background: #6dabe4;
+    color: #fff;
+    border-bottom: none;
+    padding: 15px 39px;
+    width: 50%;
+
+}
+.btn-group{
+    position: relative;
+    left: 12.5%;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+}
+.btn-group button:not(:last-child) {
+    border-bottom: none; /
+}
+
+.btn-group button:hover {
+    background-color: #6dabd4;
+}
+.bookForm{
+    display: flex;
+    width: 100%;
+}
+.col-md-6{
+    width: 50%;
+}

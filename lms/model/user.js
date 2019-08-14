@@ -15,6 +15,8 @@ class User {
     return this.books;
   }
   viewBorrowedBooks(){
+    if(typeof this.books === "undefined")
+      return undefined;
     let borrowedBooks = [];
     for (let i = 0; i < this.books.length; i++) {
       if (this.books[i].returnDate > new Date()) {

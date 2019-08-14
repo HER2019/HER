@@ -16,6 +16,9 @@ function addBorrowedBooks() {
     cell3.innerHTML = "Author";
     cell4.innerHTML = "Taken Date";
     cell5.innerHTML = "Return Date";
+    if(typeof names === "undefined"){
+        return;
+    }
     for (let i = 1 ; i <= names.length; i++) {
         row = table.insertRow(i);
         cell1 = row.insertCell(0);
