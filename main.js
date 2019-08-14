@@ -25,7 +25,7 @@ function getUser(pass, key) {
     sessionStorage.setItem(pass, JSON.stringify(user));
 }
 
- function setUser() {
+function setUser() {
     localStorage.setItem(sessionStorage.key(0), JSON.stringify(user));
 }
 

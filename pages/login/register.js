@@ -25,6 +25,7 @@ function register(){
   localStorage.setItem(encryptPass, serialObj);
   window.location.pathname = 'HER/pages/login/signin.html';
 }
+
 function login(){
   let username = document.getElementById("your_name").value;
   let password = document.getElementById("your_pass").value;
@@ -43,6 +44,8 @@ function login(){
   getUser(pass, key);
   window.location.pathname = 'HER';
 }
+
 function logout() {
   setUser();
+  ssessionStorage.clear();
 }
