@@ -1,10 +1,8 @@
 class User {
-  static cnt = 0;
-  constructor(permission, username, email, books){
+  constructor(permission, username, email, userId, books){
     this.email = email;
     this.permission = permission;
-    User.cnt++;
-    this.userId = User.cnt;
+    this.userId = userId;
     this.books = books;
     this.username = username;
   }
@@ -17,7 +15,7 @@ class User {
     return this.books;
   }
   viewBorrowedBooks(){
-    let borrowedBooks=[];
+    let borrowedBooks = [];
     for (let i = 0; i < this.books.length; i++) {
       if (this.books[i].returnDate > new Date()) {
         borrowedBooks.push(this.books[i]);

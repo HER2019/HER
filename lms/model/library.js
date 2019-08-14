@@ -3,10 +3,13 @@ const maxRequests = 5;
 const MAX_BOOKS = 5;
 
 class Library {
-    books = [];
+ //   books = [];
     recommendation = [];
     librarians = [];
     users = [];
+    constructor(books){
+        this.books = books;
+    }
     librarianSize() {
         return this.librarians.length;
     }
