@@ -1,4 +1,3 @@
-'use strict';
 function register(){
   let name = document.getElementById("name").value;
   let lastName = document.getElementById("email").value;
@@ -44,4 +43,7 @@ function login(){
   }
   getUser(pass, key);
   window.location.pathname = 'HER';
+}
+function logout() {
+  setUser();
 }

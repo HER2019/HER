@@ -2,7 +2,7 @@
 const maxRequests = 5;
 const MAX_BOOKS = 5;
 
-class Library {
+export default class Library {
     books = [];
     recommendation = [];
     librarians = [];
