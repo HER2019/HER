@@ -42,5 +42,6 @@ function login(){
       return;
     }
   }
+  getUser(pass, key);
   window.location.pathname = 'HER';
 }
