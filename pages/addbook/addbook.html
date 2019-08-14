@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>HER Library</title>
+  <title>Gourmet &mdash; Colorlib Website Template</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800|DM+Serif+Display:400,400i&display=swap" rel="stylesheet">
 
+  <script src="../../lms/model/book.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
   <script type="module" src="../../main.js"></script>
   <script src="../../lms/model/library.js"></script>
@@ -17,7 +18,7 @@
   <link rel="stylesheet" href="../../css/aos.css">
 
   <link rel="stylesheet" href="../../css/magnific-popup.css">
-  <script type="text/javascript" src="history.js"></script>
+  <script type="text/javascript" src="addbook.js"></script>
 
   <link rel="stylesheet" href="../../fonts/ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="../../fonts/fontawesome/css/font-awesome.min.css">
@@ -36,7 +37,7 @@
     tr:nth-child(even) {background-color: #f2f2f2;}
   </style>
 </head>
-<body onload="addHistory()">
+<body >
 
 <header role="banner">
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -55,15 +56,15 @@
             <a class="nav-link" href="../../recipes.html">Books</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</a>
+            <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
               <a class="dropdown-item" href="../search/searchbook.html">Search Book</a>
               <a class="dropdown-item" href="../borrowedbooks/borrowedbooks.html">Borrowed Books</a>
-              <a class="dropdown-item" >My History</a>
+              <a class="dropdown-item" href="../history/history.html">My History</a>
             </div>
-          </li>
           <li class="nav-item">
-            <a class="nav-link " href="../addbook/addbook.html">Add Book</a>
+            <a class="nav-link active">Add Book</a>
+          </li>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="../../about.html">About</a>
@@ -93,7 +94,7 @@
     <div class="container">
       <div class="row slider-text align-items-center justify-content-center">
         <div class="col-md-8 text-center col-sm-12 ">
-          <h1 data-aos="fade-up">My History</h1>
+          <h1 data-aos="fade-up">Add Book</h1>
           <p class="mb-5" data-aos="fade-up" data-aos-delay="100">Enlarge your brain power</p>
 
         </div>
@@ -111,16 +112,31 @@
     <div class="container-fluid">
       <div class="row" data-aos="fade">
         <div class="col-md-12 text-center heading-wrap">
-          <h2>My History</h2>
+          <h2>Add Book</h2>
         </div>
       </div>
     </div>
   </div>
 
   <div class="container">
-    <table id="myTable" class="container" >
 
-    </table>
+
+    <div class="form-group">
+      <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+      <input type="text" name="name" id="name" placeholder="Name"/>
+    </div>
+    <div class="form-group">
+      <label for="author"><i class="zmdi zmdi-account material-icons-name"></i></label>
+      <input type="text" name="author" id="author" placeholder="Author"/>
+    </div>
+    <div class="form-group">
+      <label for="id"><i class="zmdi zmdi-email"></i></label>
+      <input type="text" name="id" id="id" placeholder="ID"/>
+    </div>
+    <button class="form-submit" type="button" id="signup" onclick="registerBook()">
+      Register </button>
+
+
   </div>
 </section>
 
