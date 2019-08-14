@@ -47,5 +47,5 @@ function login(){
 
 function logout() {
   setUser();
-  ssessionStorage.clear();
+  sessionStorage.clear();
 }
