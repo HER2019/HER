@@ -37,7 +37,7 @@ function login(){
     return;
   }else{
     let name = JSON.parse(key).username;
-    if (name != username){
+    if (name !== username){
       alert("Wrong password or username");
       return;
     }

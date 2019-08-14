@@ -1,6 +1,6 @@
 class User {
   static cnt = 0;
-  constructor(books, permission, username, email){
+  constructor(permission, username, email, books){
     this.email = email;
     this.permission = permission;
     User.cnt++;
