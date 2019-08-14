@@ -24,6 +24,8 @@
   <link rel="stylesheet" href="../../fonts/fontawesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="../../fonts/flaticon/font/flaticon.css">
 
+  <link rel="stylesheet" href="addbook.css">
+
   <!-- Theme Style -->
   <link rel="stylesheet" href="../../css/style.css">
   <style>
@@ -108,33 +110,32 @@
 
 <section class="section bg-light pt-0 bottom-slant-gray">
 
-  <div class="clearfix mb-5 pb-5">
-    <div class="container-fluid">
-      <div class="row" data-aos="fade">
-        <div class="col-md-12 text-center heading-wrap">
-          <h2>Add Book</h2>
+  <div class="addBookForm">
+
+    <div class="clearfix mb-5 pb-5">
+      <div class="container-fluid">
+        <div class="row" data-aos="fade">
+          <div class="col-md-12 text-center heading-wrap">
+            <h2>Add Book</h2>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="container">
-
-
-    <div class="form-group">
-      <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-      <input type="text" name="name" id="name" placeholder="Name"/>
-    </div>
-    <div class="form-group">
-      <label for="author"><i class="zmdi zmdi-account material-icons-name"></i></label>
-      <input type="text" name="author" id="author" placeholder="Author"/>
-    </div>
-    <div class="form-group">
-      <label for="id"><i class="zmdi zmdi-email"></i></label>
-      <input type="text" name="id" id="id" placeholder="ID"/>
-    </div>
-    <button class="form-submit" type="button" id="signup" onclick="registerBook()">
-      Register </button>
+      <div class="form-group">
+        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+        <input type="text" name="name" id="name" placeholder="Name"/>
+      </div>
+      <div class="form-group">
+        <label for="author"><i class="zmdi zmdi-account material-icons-name"></i></label>
+        <input type="text" name="author" id="author" placeholder="Author"/>
+      </div>
+      <div class="form-group">
+        <label for="id"><i class="zmdi zmdi-email"></i></label>
+        <input type="text" name="id" id="id" placeholder="ID"/>
+      </div>
+      <button class="submitButton" type="button" id="signup" onclick="registerBook()">
+        Register Books</button>
 
 
   </div>

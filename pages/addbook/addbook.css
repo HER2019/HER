@@ -1,0 +1,51 @@
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+    overflow: hidden; }
+.form-group:last-child {
+    margin-bottom: 0px; }
+.form-submit {
+    display: flex;
+    background: #6dabe4;
+    color: #fff;
+    border-bottom: none;
+    width: auto;
+    padding: 15px 39px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    margin-top: 25px;
+    cursor: pointer; }
+.form-submit:hover {
+    background: #4292dc; }
+input {
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #999;
+    padding: 6px 30px;
+    font-family: Poppins;
+    box-sizing: border-box;
+}
+.addBookForm{
+    position: relative;
+    left: 25%;
+    width: 50%;
+}
+.submitButton {
+    position: relative;
+    left: 40%;
+    display: flex;
+    background: #6dabe4;
+    color: #fff;
+    border-bottom: none;
+    width: auto;
+    padding: 15px 39px;
+    cursor: pointer;
+}
+
+
+
+
