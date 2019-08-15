@@ -30,17 +30,13 @@ function addUser(pass, key) {
     return user;
 }
 
-<<<<<<< HEAD
 function setUser(user) {
     sessionStorage.setItem(sessionStorage.key(0), JSON.stringify(user));
 }
 function getUser() {
     return JSON.parse(sessionStorage.getItem(sessionStorage.key(0)));
-=======
-function setUser() {
-    localStorage.setItem(sessionStorage.key(0), JSON.stringify(user));
->>>>>>> f3e26aadcf120a9c25b28275a9941ef247e753a2
 }
+
 window.ctrl={
     getLibrary : getLibrary(),
     "getUser": getUser(),

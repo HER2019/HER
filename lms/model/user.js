@@ -11,6 +11,16 @@ class User {
     return this.userId;
   }
 
+  returnBook(book) {
+    for (let i = 0; i < this.books.length; i++) {
+      if (book.author === this.books[i].author &&
+          book.name === this.books[i].name) {
+        this.books[i].username = null;
+        sessionStorage.setItem(sessionStorage.key(0), JSON.stringify(this));
+      }
+    }
+  }
+
   viewHistory(){
     return this.books;
   }
@@ -18,17 +28,18 @@ class User {
   addBook(book){
     this.books.push(book);
   }
-  /*viewBorrowedBooks(){
+  viewBorrowedBooks(){
     if(typeof this.books === "undefined")
       return undefined;
     let borrowedBooks = [];
     for (let i = 0; i < this.books.length; i++) {
-      if (this.books[i].returnDate > new Date()) {
+      if (Date.parse(this.books[i].returnDate) > Date.parse(new Date())
+      && this.books[i].username != null) {
         borrowedBooks.push(this.books[i]);
       }
     }
     return borrowedBooks;
-  }*/
+  }
   request(num){
     switch(num){
       case 1:{

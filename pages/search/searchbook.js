@@ -91,7 +91,7 @@ function returnBook(){
     lib.books = ctrl.getLibrary.books;
  //   let us = new User();
   //  us.books = ctrl.getUser.books;
-    (lib.returnBook(ctrl.getUser.username, book.id));
+    lib.returnBook(book.username, book.id);
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
     localStorage.setItem(pass, JSON.stringify(ctrl.getLibrary));
 }

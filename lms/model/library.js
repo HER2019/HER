@@ -146,8 +146,9 @@ class Library {
                 this.books[i].username = null;
                 let us = new User();
                 us.books = ctrl.getUser.books;
-                us.addBook(this.books[i]);
-                localStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
+              //  us.addBook(this.books[i]);
+                us.returnBook(this.books[i]);
+                sessionStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
                 break;
             }
         }
