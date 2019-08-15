@@ -1,12 +1,14 @@
 class Book{
-    constructor(id, name, author, takenDate, returnDate, userId)
+    constructor(id, name, author, takenDate, returnDate, username)
     {
         this.id = id;
         this.name = name;
         this.author = author;
         this.takenDate = takenDate;
         this.returnDate = returnDate;
-        this.userId = userId;
+        if(typeof username === "undefined")
+            this.username = null;
+        this.selected = 0;
     }
     get bookID() {
         return this.id;
@@ -17,11 +19,11 @@ class Book{
     set bookName(Name) {
         this.name = Name;
     }
-    get userID() {
+    get userName() {
         return this.userId;
     }
-    set userID(userId) {
-        this.userId = userId;
+    set userName(username) {
+        this.username = username;
     }
     get bookName() {
         return this.name;
@@ -29,17 +31,6 @@ class Book{
     get bookAuthor() {
         return this.author;
     }
-    set bookTakenDate(takenDate) {
-        this.takenDate = takenDate;
-    }
-    get bookTakenDate() {
-        return this.takenDate;
-    }
-    set bookReturnDate(returnDate) {
-        this.returnDate = returnDate;
-    }
-    get bookReturnDate() {
-        return this.returnDate;
-    }
+
 
 }

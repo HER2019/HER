@@ -1,9 +1,9 @@
 class User {
+  books = [];
   constructor(permission, username, email, userId, books){
     this.email = email;
     this.permission = permission;
     this.userId = userId;
-    this.books = books;
     this.username = username;
   }
 
@@ -14,7 +14,11 @@ class User {
   viewHistory(){
     return this.books;
   }
-  viewBorrowedBooks(){
+
+  addBook(book){
+    this.books.push(book);
+  }
+  /*viewBorrowedBooks(){
     if(typeof this.books === "undefined")
       return undefined;
     let borrowedBooks = [];
@@ -24,7 +28,7 @@ class User {
       }
     }
     return borrowedBooks;
-  }
+  }*/
   request(num){
     switch(num){
       case 1:{

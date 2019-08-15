@@ -3,12 +3,27 @@ const maxRequests = 5;
 const MAX_BOOKS = 5;
 
 class Library {
- //   books = [];
+    books = [];
     recommendation = [];
     librarians = [];
     users = [];
     constructor(books){
-        this.books = books;
+        if(typeof books !== "undefined")
+         this.books = books;
+    }
+    selectBookById(i){
+        this.books[i].selected=1;
+    }
+    findSelectedBook(){
+        for(let i = 0;i < this.books.length;i++){
+            if(this.books[i].selected===1)
+                return this.books[i];
+        }
+    }
+    unselectBookById(){
+        for(let i = 0;i < this.books.length;i++){
+                this.books[i].selected = 0;
+        }
     }
     librarianSize() {
         return this.librarians.length;
@@ -70,19 +85,33 @@ class Library {
                 }
                 totalNumber++;
                 let today = new Date();
-                if(today > this.books[i].bookReturnDate)
+                if(today > this.books[i].returnDate)
                     return false;
             }
         }
         return true;
     }
-    takeBook (userID, bookID) {
+    viewBorrowedBooks(username){
+        let borrowedBooks = [];
         for (let i = 0; i < this.books.length; i++) {
-            if (this.books[i].bookID === bookID && typeof this.books[i].userID === "undefined") {
-                this.books[i].userID = userID;
-                this.books[i].bookTakenDate = new Date();
-                this.books[i].bookReturnDate = new Date(Date.now() + 12096e5);
-                break;
+            if (this.books[i].username === username &&
+                Date.parse(this.books[i].returnDate) > Date.parse(new Date())) {
+                    borrowedBooks.push(this.books[i]);
+                }
+            }
+        return borrowedBooks;
+    }
+    takeBook (username, bookID) {
+        for (let i = 0; i < this.books.length; i++) {
+            if (this.books[i].id === bookID)
+                if(this.books[i].username === null) {
+                this.books[i].username = username;
+                this.books[i].takenDate = new Date();
+                this.books[i].returnDate = new Date(Date.now() + 12096e5);
+                let us = new User();
+                us.books = ctrl.getUser.books;
+                us.addBook(this.books[i]);
+                sessionStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
             }
         }
     }
@@ -91,11 +120,16 @@ class Library {
             return false;
         return this.checkUserHistoryForBook(userID, bookID);
     }
-    renewalBook(userID, bookID){
+    renewalBook(username, id){
         for (let i = 0; i < this.books.length; i++) {
-            if(this.books[i].bookID === bookID && this.books[i].userID === userID) {
+            if(this.books[i].id === id && this.books[i].username === username) {
                 let today = new Date();
-                this.books[i].bookReturnDate= new Date(Date.now() + 12096e5);
+                this.books[i].returnDate= new Date(Date.now() + 12096e5);
+                 let us = new User();
+                us.books = ctrl.getUser.books;
+                us.addBook(this.books[i]);
+                 localStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
+                 break;
             }
         }
     }
@@ -106,10 +140,14 @@ class Library {
         }
         return false;
     }
-    returnBook (userID, bookID) {
+    returnBook (username, id) {
         for (let i = 0; i < this.books.length; i++) {
-            if (this.books[i].bookID === bookID && this.books[i].userID === userID) {
-                this.books[i].userID = undefined;
+            if (this.books[i].id === id && this.books[i].username === username) {
+                this.books[i].username = null;
+                let us = new User();
+                us.books = ctrl.getUser.books;
+                us.addBook(this.books[i]);
+                localStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
                 break;
             }
         }

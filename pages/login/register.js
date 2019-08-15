@@ -40,7 +40,7 @@ function login(){
       return;
     }
   }
-  getUser(pass, key);
+  addUser(pass, key);
   window.location.pathname = 'HER';
 }
 function logout() {

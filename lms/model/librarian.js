@@ -26,21 +26,21 @@ class Librarian {
         this.libary.addRecommendation(recommendation);
         return true;
     }
-    responseForBookIssue (userID, bookID) {
-        if(this.libary.checkUserHistory(userID) === false){
+    responseForBookIssue (username, bookID) {
+   /*     if(this.libary.checkUserHistory(userID) === false){
             throw "cant take book";
         }
         if(this.libary.checkBookAvailability(bookID) === false){
             throw new Error("no book in library");
-        }
-        this.libary.takeBook(userID, bookID);
+        }*/
+        this.libary.takeBook(username, bookID);
         return true;
     }
-    responseForBookRenewal(userID, bookID) {
-        if(this.libary.checkUserHistoryForRenewal(userID, bookID) === false){
+    responseForBookRenewal(username, bookID) {
+        if(this.libary.checkUserHistoryForRenewal(username, bookID) === false){
             throw "cant Renewal book";
         }
-        this.libary.renewalBook(userID, bookID);
+        this.libary.renewalBook(username, bookID);
         return true;
     }
     responseForBookReturn (userID, bookID) {
