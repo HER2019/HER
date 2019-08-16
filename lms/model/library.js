@@ -4,7 +4,6 @@ const MAX_BOOKS = 5;
 
 class Library {
     books = [];
-    recommendation = [];
     librarians = [];
     users = [];
     constructor(books){
@@ -56,30 +55,24 @@ class Library {
     registerBook (book) {
         this.books.push(book);
     }
-    addRecommendation (recommendation){
-        this.recommendation.push(recommendation);
-    }
-    findRecommendation(recommendation){
-        for (let i = 0; i < this.recommendation.length; i++) {
-            if (typeof this.recommendation[i] !== 'undefined' &&
-                this.recommendation[i].UserID === recommendation.UserID &&
-                this.recommendation[i].BookID === recommendation.BookID) {
-                return true;
-            }
-        }
-        return false;
-    }
-    checkBookAvailability(bookID){
+    checkBookAvailability(id){
         for (let i = 0; i < this.books.length; i++) {
-            if (this.books[i].bookID === bookID && typeof this.books[i].userID === "undefined")
+            if (this.books[i].id === id && typeof this.books[i].username === "undefined")
                 return true;
         }
         return false;
     }
-    checkUserHistory(userID){
+    checkUserHistoryForBook(userID, bookID){
+        for (let i = 0; i < this.books.length; i++) {
+        if(this.books[i].bookID === bookID && this.books[i].userID === userID)
+            return true;
+        }
+        return false;
+    }
+    checkUserHistory(username){
         let totalNumber = 0;
         for (let i = 0; i < this.books.length; i++) {
-            if (this.books[i].UserID === userID) {
+            if (this.books[i].username === username) {
                 if(totalNumber === MAX_BOOKS) {
                     return false;
                 }
@@ -102,6 +95,9 @@ class Library {
         return borrowedBooks;
     }
     takeBook (username, bookID) {
+        if(this.checkUserHistory(username) === false){
+            throw false;
+        }
         for (let i = 0; i < this.books.length; i++) {
             if (this.books[i].id === bookID &&this.books[i].username === null) {
                 this.books[i].username = username;
@@ -115,9 +111,10 @@ class Library {
                 us.username=ctrl.getUser.username;
                 us.addBook(this.books[i]);
                 sessionStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
-                break;
+                return true;
             }
         }
+        return  false;
     }
     checkUserHistoryForRenewal(userID, bookID){
         if(this.checkUserHistory(userID) === false)
@@ -141,13 +138,6 @@ class Library {
             }
         }
     }
-    checkUserHistoryForBook(userID, bookID){
-        for (let i = 0; i < this.books.length; i++) {
-            if(this.books[i].bookID === bookID && this.books[i].userID === userID)
-                return true;
-        }
-        return false;
-    }
     returnBook (username, id) {
         for (let i = 0; i < this.books.length; i++) {
             if (this.books[i].id === id && this.books[i].username === username) {
@@ -158,10 +148,8 @@ class Library {
                 us.email=ctrl.getUser.email;
                 us.userId=ctrl.getUser.userId;
                 us.username=ctrl.getUser.username;
-              //  us.addBook(this.books[i]);
                 us.returnBook(this.books[i]);
                 sessionStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
-                break;
             }
         }
     }

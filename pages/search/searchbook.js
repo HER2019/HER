@@ -41,8 +41,7 @@ function updateResult(query) {
         }
     }
 }
-function openBook()
-{
+function openBook() {
     let book = ctrl.getLibrary.findSelectedBook();
     let element = document.getElementById("text");
     let para = document.createElement("h2");
@@ -58,38 +57,66 @@ function openBook()
     para2.appendChild(node2);
     element.appendChild(para2);
     if(book.username == null) {
-        let para = `<button class="submitButton" type="button" id="Take" onclick="takeBook()">
-                Take Book</button>`;
-        let element = document.getElementById("btn-group");
-        element.innerHTML = para;
+        addTakeButton();
     }else{
-        let para = `<button class="submitButton" type="button" id="Renewal" onclick="renewalBook()">
+        addReturnButton();
+    }
+}
+function addTakeButton(){
+    let para = `<button class="submitButton" type="button" id="Take" onclick="takeBook()">
+                Take Book</button>`;
+    let element = document.getElementById("btn-group");
+    element.innerHTML = para;
+}
+function addReturnButton(){
+    let para = `<button class="submitButton" type="button" id="Renewal" onclick="renewalBook()">
                 Renewal Book</button>
             <button class="submitButton" type="button" id="Return" onclick="returnBook()">
                 Return Book</button>`;
-        let element = document.getElementById("btn-group");
-        element.innerHTML = para;
-    }
+    let element = document.getElementById("btn-group");
+    element.innerHTML = para;
 }
 function takeBook(){
     let book = ctrl.getLibrary.findSelectedBook();
     let lib = new Library();
     lib.books = ctrl.getLibrary.books;
-    lib.takeBook(ctrl.getUser.username, book.id);
+    if(lib.takeBook(ctrl.getUser.username, book.id)){
+       Swal.fire({
+           position: 'top-end',
+           type: 'success',
+           title: 'Your work has been saved',
+           showConfirmButton: false,
+           timer: 1500
+       })
+    }else{
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: '<a href>Why do I have this issue?</a>'
+        })
+    }
     let tmp = ctrl.getLibrary;
     tmp.books= lib.books;
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
     localStorage.setItem(pass, JSON.stringify(tmp));
-    location.reload();
+    addReturnButton();
 }
 function  recommendBook() {
     let recommendation = document.getElementById("recommendation").value;
+    let book = ctrl.getLibrary.findSelectedBook();
     let lib = new Library();
     lib.books = ctrl.getLibrary.books;
-    let book = ctrl.getLibrary.findSelectedBook();
     lib.addRecommendation(new Recommendation(ctrl.getUser.username, book.id,recommendation));
+    Swal.fire({
+        position: 'top-end',
+        type: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+    });
     let tmp = ctrl.getLibrary;
-    tmp.recommendation= lib.recommendation;
+    tmp.books= lib.books;
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
     localStorage.setItem(pass, JSON.stringify(tmp));
     closeRecommendBook();
@@ -113,7 +140,6 @@ function renewalBook(){
      (lib.renewalBook(ctrl.getUser.username, book.id));
     let tmp = ctrl.getLibrary;
     tmp.books= lib.books;
-   // localStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
     localStorage.setItem(pass, JSON.stringify(tmp));
 }
@@ -121,13 +147,18 @@ function returnBook(){
     let book = ctrl.getLibrary.findSelectedBook();
     let lib = new Library();
     lib.books = ctrl.getLibrary.books;
- //   let us = new User();
-  //  us.books = ctrl.getUser.books;
     lib.returnBook(book.username, book.id);
+    Swal.fire({
+        position: 'top-end',
+        type: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+    });
     let tmp = ctrl.getLibrary;
     tmp.books= lib.books;
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
     localStorage.setItem(pass, JSON.stringify(tmp));
-    location.reload();
+    addTakeButton();
 }
 

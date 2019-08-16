@@ -46,10 +46,9 @@ class Librarian {
     responseForBookReturn (userID, bookID) {
         let diff = this.libary.checkUserHistoryForBook(userID);
         if(diff > 0){
-            throw `pay ${diff}`;
+            return false;
         }
-        this.libary.returnBook(userID, bookID);
-        return true;
+        return this.libary.returnBook(userID, bookID);
     }
     addBook(id, name, author){
         this.libary.registerBook(new Book(id, name, author));

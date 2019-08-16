@@ -1,14 +1,20 @@
 'use strict';
-
 function getLibrary(){
-    let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
-    let lib = JSON.parse(localStorage.getItem(pass));
-    let library=new Library();
-    library.books = lib.books;
-    library.users = lib.users;
-    library.librarians = lib.librarians;
-    library.recommendation = lib.recommendation;
-    return library;
+    if (localStorage.getItem("e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419") !== null) {
+        let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
+        let lib = JSON.parse(localStorage.getItem(pass));
+        let library = new Library();
+        library.books = lib.books;
+        library.users = lib.users;
+        library.librarians = lib.librarians;
+        library.recommendation = lib.recommendation;
+        return library;
+    }
+    else{
+        let tmp = new Library();
+        localStorage.setItem("e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419", JSON.stringify(tmp));
+        return true;
+    }
 }
 function setLibrary(lib){
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
