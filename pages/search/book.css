@@ -4,7 +4,11 @@
     border-bottom: none;
     padding: 15px 39px;
     width: 50%;
-
+}
+.inputRec{
+    position: relative;
+    width: 50%;
+    height: 100%;
 }
 .btn-group{
     position: relative;
@@ -27,4 +31,9 @@
 }
 .col-md-6{
     width: 50%;
+}
+.doneButton{
+    position: relative;
+    width: 10%;
+    height: 100%;
 }

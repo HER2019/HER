@@ -76,25 +76,45 @@ function takeBook(){
     let lib = new Library();
     lib.books = ctrl.getLibrary.books;
     lib.takeBook(ctrl.getUser.username, book.id);
- //   localStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
-    ctrl.getLibrary.books = lib.books;
+    let tmp = ctrl.getLibrary;
+    tmp.books= lib.books;
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
-    localStorage.setItem(pass, JSON.stringify(ctrl.getLibrary));
+    localStorage.setItem(pass, JSON.stringify(tmp));
 }
-function  recommendBook(){
-    //TODO
-   // library.responseForBookRecommend();
+function  recommendBook() {
+    let recommendation = document.getElementById("recommendation").value;
+    let lib = new Library();
+    lib.books = ctrl.getLibrary.books;
+    let book = ctrl.getLibrary.findSelectedBook();
+    lib.addRecommendation(new Recommendation(ctrl.getUser.username, book.id,recommendation));
+    let tmp = ctrl.getLibrary;
+    tmp.recommendation= lib.recommendation;
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
-    localStorage.setItem(pass, JSON.stringify(ctrl.getLibrary));
+    localStorage.setItem(pass, JSON.stringify(tmp));
+    closeRecommendBook();
+}
+function  openRecommendBook(){
+    let para = `<input class="inputRec" type="text" name="your_name" id="recommendation" placeholder="Your Name">
+            <button class="doneButton" type="button" onclick="recommendBook()">
+                Add Recommendation</button>`;
+    let element = document.getElementById("Recommend");
+    element.innerHTML = para;
+}
+function  closeRecommendBook(){
+    let para = ``;
+    let element = document.getElementById("Recommend");
+    element.innerHTML = para;
 }
 function renewalBook(){
     let book = ctrl.getLibrary.findSelectedBook();
     let lib = new Library();
     lib.books = ctrl.getLibrary.books;
      (lib.renewalBook(ctrl.getUser.username, book.id));
+    let tmp = ctrl.getLibrary;
+    tmp.books= lib.books;
    // localStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
-    localStorage.setItem(pass, JSON.stringify(ctrl.getLibrary));
+    localStorage.setItem(pass, JSON.stringify(tmp));
 }
 function returnBook(){
     let book = ctrl.getLibrary.findSelectedBook();
@@ -103,7 +123,9 @@ function returnBook(){
  //   let us = new User();
   //  us.books = ctrl.getUser.books;
     lib.returnBook(book.username, book.id);
+    let tmp = ctrl.getLibrary;
+    tmp.books= lib.books;
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
-    localStorage.setItem(pass, JSON.stringify(ctrl.getLibrary));
+    localStorage.setItem(pass, JSON.stringify(tmp));
 }
 

@@ -12,6 +12,7 @@
     <script src="../../lms/model/library.js"></script>
     <script src="../../lms/model/user.js"></script>
     <script src="../../lms/model/book.js"></script>
+    <script src="../../lms/model/recommendation.js"></script>
     <link rel="stylesheet" href="../../css/bootstrap.css">
     <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="../../css/owl.carousel.min.css">
@@ -135,8 +136,9 @@
             </div>
         </div>
         <div class="btn-group">
-            <button class="submitButton" type="button" id="Recommend" onclick="recommendBook()">
+            <button class="submitButton" type="button" onclick="openRecommendBook()">
                 Recommend Book</button>
+            <div id="Recommend"></div>
             <div id="btn-group"></div>
         </div>
     </div>
