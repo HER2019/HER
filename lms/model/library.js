@@ -15,7 +15,7 @@ class Library {
         this.books[i].selected=1;
     }
     findSelectedBook(){
-        for(let i = 0;i < this.books.length;i++){
+        for(let i = 0; i < this.books.length;i++){
             if(this.books[i].selected===1)
                 return this.books[i];
         }
@@ -103,15 +103,19 @@ class Library {
     }
     takeBook (username, bookID) {
         for (let i = 0; i < this.books.length; i++) {
-            if (this.books[i].id === bookID)
-                if(this.books[i].username === null) {
+            if (this.books[i].id === bookID &&this.books[i].username === null) {
                 this.books[i].username = username;
                 this.books[i].takenDate = new Date();
                 this.books[i].returnDate = new Date(Date.now() + 12096e5);
                 let us = new User();
                 us.books = ctrl.getUser.books;
+                us.permission=ctrl.getUser.permission;
+                us.email=ctrl.getUser.email;
+                us.userId=ctrl.getUser.userId;
+                us.username=ctrl.getUser.username;
                 us.addBook(this.books[i]);
                 sessionStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
+                break;
             }
         }
     }
@@ -127,8 +131,12 @@ class Library {
                 this.books[i].returnDate= new Date(Date.now() + 12096e5);
                  let us = new User();
                 us.books = ctrl.getUser.books;
+                us.permission=ctrl.getUser.permission;
+                us.email=ctrl.getUser.email;
+                us.userId=ctrl.getUser.userId;
+                us.username=ctrl.getUser.username;
                 us.addBook(this.books[i]);
-                 localStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
+                sessionStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
                  break;
             }
         }
@@ -146,6 +154,10 @@ class Library {
                 this.books[i].username = null;
                 let us = new User();
                 us.books = ctrl.getUser.books;
+                us.permission=ctrl.getUser.permission;
+                us.email=ctrl.getUser.email;
+                us.userId=ctrl.getUser.userId;
+                us.username=ctrl.getUser.username;
               //  us.addBook(this.books[i]);
                 us.returnBook(this.books[i]);
                 sessionStorage.setItem(sessionStorage.key(0), JSON.stringify(us));

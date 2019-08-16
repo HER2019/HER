@@ -57,12 +57,25 @@ function openBook()
     let node2 = document.createTextNode(book.id);
     para2.appendChild(node2);
     element.appendChild(para2);
+    if(book.username == null) {
+        let para = `<button class="submitButton" type="button" id="Take" onclick="takeBook()">
+                Take Book</button>`;
+        let element = document.getElementById("btn-group");
+        element.innerHTML = para;
+    }else{
+        let para = `<button class="submitButton" type="button" id="Renewal" onclick="renewalBook()">
+                Renewal Book</button>
+            <button class="submitButton" type="button" id="Return" onclick="returnBook()">
+                Return Book</button>`;
+        let element = document.getElementById("btn-group");
+        element.innerHTML = para;
+    }
 }
 function takeBook(){
     let book = ctrl.getLibrary.findSelectedBook();
     let lib = new Library();
     lib.books = ctrl.getLibrary.books;
-    (lib.takeBook(ctrl.getUser.username, book.id));
+    lib.takeBook(ctrl.getUser.username, book.id);
  //   localStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
     ctrl.getLibrary.books = lib.books;
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
@@ -78,8 +91,6 @@ function renewalBook(){
     let book = ctrl.getLibrary.findSelectedBook();
     let lib = new Library();
     lib.books = ctrl.getLibrary.books;
-    // let us = new User();
-    // us.books = ctrl.getUser.books;
      (lib.renewalBook(ctrl.getUser.username, book.id));
    // localStorage.setItem(sessionStorage.key(0), JSON.stringify(us));
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
