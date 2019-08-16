@@ -80,6 +80,7 @@ function takeBook(){
     tmp.books= lib.books;
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
     localStorage.setItem(pass, JSON.stringify(tmp));
+    location.reload();
 }
 function  recommendBook() {
     let recommendation = document.getElementById("recommendation").value;
@@ -94,7 +95,7 @@ function  recommendBook() {
     closeRecommendBook();
 }
 function  openRecommendBook(){
-    let para = `<input class="inputRec" type="text" name="your_name" id="recommendation" placeholder="Your Name">
+    let para = `<input class="inputRec" type="text" name="recommendation" id="recommendation" placeholder="Your Name">
             <button class="doneButton" type="button" onclick="recommendBook()">
                 Add Recommendation</button>`;
     let element = document.getElementById("Recommend");
@@ -127,5 +128,6 @@ function returnBook(){
     tmp.books= lib.books;
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
     localStorage.setItem(pass, JSON.stringify(tmp));
+    location.reload();
 }
 
