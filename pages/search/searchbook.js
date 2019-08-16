@@ -107,7 +107,7 @@ function  recommendBook() {
     let book = ctrl.getLibrary.findSelectedBook();
     let lib = new Library();
     lib.books = ctrl.getLibrary.books;
-    lib.addRecommendation(new Recommendation(ctrl.getUser.username, book.id,recommendation));
+    lib.addRecommendation(new Recommendation(ctrl.getUser.username));
     Swal.fire({
         position: 'top-end',
         type: 'success',
@@ -140,6 +140,13 @@ function renewalBook(){
      (lib.renewalBook(ctrl.getUser.username, book.id));
     let tmp = ctrl.getLibrary;
     tmp.books= lib.books;
+    Swal.fire({
+        position: 'top-end',
+        type: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+    });
     let pass = "e436137c3fd49ebb2a50f981f991dfdbf4a76f31ada645a20dd3c382190cf419";
     localStorage.setItem(pass, JSON.stringify(tmp));
 }

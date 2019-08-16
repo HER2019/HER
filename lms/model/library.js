@@ -6,6 +6,7 @@ class Library {
     books = [];
     librarians = [];
     users = [];
+    recommendation= [];
     constructor(books){
         if(typeof books !== "undefined")
          this.books = books;
@@ -23,6 +24,18 @@ class Library {
         for(let i = 0;i < this.books.length;i++){
                 this.books[i].selected = 0;
         }
+    }
+    addRecommendation (recommendation){
+        this.recommendation.push(recommendation);
+    }
+    findRecommendation(recommendation){
+        for (let i = 0; i < this.recommendation.length; i++) {
+            if (typeof this.recommendation[i] !== 'undefined' &&
+                this.recommendation[i].UserID === recommendation.UserID) {
+                return true;
+            }
+        }
+        return false;
     }
     librarianSize() {
         return this.librarians.length;
